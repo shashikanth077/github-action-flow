@@ -15,6 +15,7 @@ The GitHub Actions workflow is defined in:
 .github/workflows/deploy.yml
 
 📄 Sample Workflow
+
 name: React CI/CD
 on:
   push:
