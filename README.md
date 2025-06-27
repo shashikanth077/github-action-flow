@@ -16,24 +16,30 @@ The GitHub Actions workflow is defined in:
 
 📄 Sample Workflow
 
-name: React CI/CD
+name: Build and Deploy React App to GitHub Pages
+
 on:
   push:
     branches:
       - main
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '20'
 
-      - run: npm install
-      - run: npm test -- --watchAll=false
-      - run: npm run build
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
